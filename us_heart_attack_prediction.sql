@@ -1,4 +1,4 @@
-use heart_attack_ds
+use heart_attack_ds;
 
 --Find avg and group by age and and gender
 select 
@@ -18,6 +18,8 @@ as Smoker_Percentage from heart_attack_dataset;
 select
 round(sum(cast(Diabetes as float)) / count(Diabetes) * 100, 2)
 as Diabetes_Percentage from heart_attack_dataset;
+
+
 
 
 
