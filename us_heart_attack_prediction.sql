@@ -6,5 +6,6 @@ AVG(BloodPressure) as avg_bp,
 ROUND(AVG(BMI),2) as avg_BMI, Age, Gender
 from heart_attack_dataset
 group by Age, Gender
+order by age asc
 
 
