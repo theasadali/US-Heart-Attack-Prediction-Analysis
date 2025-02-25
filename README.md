@@ -1,5 +1,5 @@
 # US-Heart-Attack-Prediction-Analysis
-SQL Project Assignment for Junior Data Analyst
+## SQL Project Assignment for Junior Data Analyst
 Project Title: Heart Attack Risk Analysis Using SQL
 Objective:
 Analyze the given dataset to identify patterns and risk factors associated with heart attacks using SQL queries.
