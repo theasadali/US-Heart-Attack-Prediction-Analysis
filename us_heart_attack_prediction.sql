@@ -38,10 +38,17 @@ order by number_of_HA_cases DESC
 --Query to heck if smokers have a higher probability of heart attacks than non-smokers
 -- P (smokers | heart attack) = number of smokers with heart attack / total number of smokers
 -- P (non-smokers | heart attack = number of non-smokers with heart attack / total number of smokers
-
 select Smoker,
 count(*) as total_people,
 sum(cast(PreviousHeartAttack as float)) as total_heart_attacks,
 sum(cast(PreviousHeartAttack as float)) * 100 / count(*) --checks the probability - group by clause seperates the smokers and non-smokers
 from heart_attack_dataset
 group by Smoker;
+
+--Analyze the relationship between diabetes and heart attacks
+select 
+    (count(*) * sum(cast(Diabetes as float) * cast(PreviousHeartAttack as float)) - sum(cast(Diabetes as float)) * sum(cast(PreviousHeartAttack as float))) /
+    (sqrt((count(*) * sum(cast(Diabetes as float) * cast(Diabetes as float)) - power(sum(cast(Diabetes as float)), 2)) * 
+          (count(*) * sum(cast(PreviousHeartAttack as float) * cast(PreviousHeartAttack as float)) - power(sum(cast(PreviousHeartAttack as float)), 2)))) 
+    as relation_Diabetes_and_HeartAttack
+from heart_attack_dataset;
