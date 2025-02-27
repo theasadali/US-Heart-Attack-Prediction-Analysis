@@ -28,4 +28,8 @@ select
 from heart_attack_dataset;
 
 --Query to find top 5 age groups with the highest heart attack cases
-select
+select Age, sum(cast(PreviousHeartAttack as float)) as number_of_HA_cases
+from heart_attack_dataset
+where PreviousHeartAttack = 1
+group by Age
+order by number_of_HA_cases DESC
