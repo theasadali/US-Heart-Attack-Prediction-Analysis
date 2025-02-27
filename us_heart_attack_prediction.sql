@@ -19,11 +19,13 @@ select
 round(sum(cast(Diabetes as float)) / count(Diabetes) * 100, 2)
 as Diabetes_Percentage from heart_attack_dataset;
 
---finding correlation between hypertention and heart-attack
-SELECT 
-    (COUNT(*) * SUM(cast(Hypertension as float) * cast(PreviousHeartAttack as float)) - SUM(cast(Hypertension as float)) * SUM(cast(PreviousHeartAttack as float))) /
-    (SQRT((COUNT(*) * SUM(cast(Hypertension as float) * cast(Hypertension as float)) - POWER(SUM(cast(Hypertension as float)), 2)) * 
-          (COUNT(*) * SUM(cast(PreviousHeartAttack as float) * cast(PreviousHeartAttack as float)) - POWER(SUM(cast(PreviousHeartAttack as float)), 2)))) 
-    AS correlation
-FROM heart_attack_dataset;
+--Query to find correlation between hypertension and heart-attack
+select 
+    (count(*) * sum(cast(Hypertension as float) * cast(PreviousHeartAttack as float)) - sum(cast(Hypertension as float)) * sum(cast(PreviousHeartAttack as float))) /
+    (sqrt((count(*) * sum(cast(Hypertension as float) * cast(Hypertension as float)) - power(sum(cast(Hypertension as float)), 2)) * 
+          (count(*) * sum(cast(PreviousHeartAttack as float) * cast(PreviousHeartAttack as float)) - power(sum(cast(PreviousHeartAttack as float)), 2)))) 
+    as correlation
+from heart_attack_dataset;
 
+--Query to find top 5 age groups with the highest heart attack cases
+select
